@@ -1,0 +1,88 @@
+<p id="notice"><%= notice %></p>
+
+  <!-- Side Bar -->
+ 
+        <div class="large-3 small-12 columns">
+ 
+          <div class="nate container">
+            <div class="nate ear left"><div class="nate ear inner"> </div> </div>
+            <div class="nate ear right"><div class="nate ear inner"> </div> </div>
+
+            <div class="nate tongue"> </div>
+
+            <div class="nate lower-face">
+              <div class="nate nose">
+              </div>
+              <div class="nate mouth"> </div> 
+            </div>
+            <div class="nate head"> </div>
+            <div class="nate eye left"><div class="nate brow left"></div><div class="nate pupil"><div class="nate pupil reflection" > </div> </div> </div>
+            <div class="nate eye right"><div class="nate brow right"></div><div class="nate pupil"><div class="nate pupil reflection" > </div>  </div> </div>
+          </div>     
+ 
+          <div class="hide-for-small panel">
+            <h3><%= @category.name %></h3>
+            <h5 class="subheader"><%= @category.description %></h5>
+          </div>
+ 
+          <a href="#">
+          <div class="panel callout radius">
+            <h6>99&nbsp; items in your cart</h6>
+          </div>
+          </a>
+ 
+        </div>
+ 
+    <!-- End Side Bar -->
+ 
+ 
+    <!-- Thumbnails -->
+ 
+        <div class="large-9 columns">
+          <div class="row" data-equalizer>
+          <% @category.products.each do |product| %>
+            <%= link_to product do %>
+            <div class="large-3 small-6 columns product image" data-equalizer-watch>
+              <%= image_tag product.photos.first.image.thumb('150x').url if product.photos.first.image_stored? %>
+              <div class="panel product name">
+                <h5><%= product.name %></h5>
+                <h6 class="subheader product price">$<%= product.price.round(2) %></h6>
+              </div>
+              <ul class="horizontal product admin">
+                <li><%= link_to 'Edit', edit_product_path(product) %></li>
+                <li><%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %></li>
+              </ul>
+            </div>
+            <% end %>
+          <% end %>
+ 
+    <!-- End Thumbnails -->
+          </div>
+        </div>
+      </div>
+ 
+ 
+    <!-- Footer -->
+ 
+      <footer class="row">
+        <div class="large-12 columns"><hr />
+          <div class="row">
+ 
+            <div class="large-4 columns">
+              <p>Copyright &copy; <%= Time.now.year %> - Ryan Spencer</p>
+            </div>
+ 
+            <div class="large-8 columns">
+              <ul class="inline-list right">
+                <%= render "categories/list_menu" %>
+              </ul>
+            </div>
+ 
+          </div>
+        </div>
+      </footer>
+ 
+    <!-- End Footer -->
+ 
+    </div>
+  </div>    

@@ -1,0 +1,12 @@
+<%= link_to 'New Photo', new_photo_path, class: "button small" %>
+<div class="large-12" data-equalizer>
+  <% @photos.each do |photo| %>
+  <div class="large-3 column left" data-equalizer-watch>
+    <%= image_tag photo.image.thumb('160x').url %>
+    <ul class="horizontal">
+      <li><%= link_to 'View', photo, class: "button tiny" %></li>
+      <li><%= link_to 'Delete', photo, class: "button tiny alert", method: :delete, data: { confirm: 'Are you sure?' } %></li>
+    </ul>
+  </div>
+  <% end %>
+</div>
